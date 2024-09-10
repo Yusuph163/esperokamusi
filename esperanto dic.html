@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KAMUSI YA ESPERANTO</title>
+    <style>
+        /* Import fonti ya Tactful */
+        @import url('https://fonts.googleapis.com/css2?family=Tactful:wght@400;700&display=swap');
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #1e90ff, #00ff00); /* Mchanganyiko wa buluu na kijani */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff1f;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 400px;
+            /* Ongeza kivuli kidogo kwa kuta */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .search-frame {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .search-frame label {
+            margin-bottom: 10px;
+        }
+
+        .search-frame input {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .search-frame button {
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .search-frame button:hover {
+            background-color: #0056b3;
+        }
+
+        .output-frame {
+            margin-top: 20px;
+        }
+
+        #outputText {
+            white-space: pre-wrap; /* Inaruhusu maandiko ya awali kudumishwa */
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            /* Tumia fonti ya Tactful */
+            font-family: 'Tactful', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <!DOCTYPE html>
+    <html lang="sw">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>KAMUSI YA ESPERANTO-KISWAHILI</title>
+        <style>
+            /* Import fonti ya Tactful */
+            @import url('https://fonts.googleapis.com/css2?family=Tactful:wght@400;700&display=swap');
+    
+            body {
+                font-family: Arial, sans-serif;
+                background: linear-gradient(to right, #1e90ff, #00ff00); /* Mchanganyiko wa buluu na kijani */
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+    
+            .container {
+                background-color: #ffffff1f;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                width: 400px;
+                /* Ongeza kivuli kidogo kwa kuta */
+                box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            }
+    
+            h1 {
+                text-align: center;
+                color: #333;
+            }
+    
+            .search-frame {
+                display: flex;
+                flex-direction: column;
+            }
+    
+            .search-frame label {
+                margin-bottom: 10px;
+            }
+    
+            .search-frame input {
+                padding: 10px;
+                margin-bottom: 10px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+            }
+    
+            .search-frame button {
+                padding: 10px;
+                background-color: #007bff;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+    
+            .search-frame button:hover {
+                background-color: #0056b3;
+            }
+    
+            .output-frame {
+                margin-top: 20px;
+            }
+    
+            #outputText {
+                white-space: pre-wrap; /* Inaruhusu maandiko ya awali kudumishwa */
+                background-color: #f4f4f4;
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                /* Tumia fonti ya Tactful */
+                font-family: 'Tactful', sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>ESPERANTO-KISWAHILI</h1>
+            <div class="search-frame">
+                <label for="languageSelect">Chagua Lugha:</label>
+                <select id="languageSelect">
+                    <option value="eo-to-sw">Esperanto kwenda Kiswahili</option>
+                    <option value="sw-to-eo">Kiswahili kwenda Esperanto</option>
+                </select>
+                <label for="wordInput">Ingiza neno:</label>
+                <input type="text" id="wordInput" placeholder="Ingiza hapa...">
+                <button id="searchButton">Tafsiri</button>
+            </div>
+            <div class="output-frame">
+                <h2>Tafsiri:</h2>
+                <pre id="outputText"></pre>
+            </div>
+        </div>
+        <script>
+            // Tafsiri za neno kutoka Esperanto hadi Kiswahili na Kiswahili hadi Esperanto
+            const translations = {
+                // Esperanto hadi Kiswahili
+                "saluton": "salamu",
+                "amiko": "rafiki",
+                "libro": "kitabu",
+                "domo": "nyumba",
+                "hundo": "mbwa",
+                "kato": "paka",
+                "aro": "seti",
+                "eduki": "kujifunza",
+                "vorto": "neno",
+                "lernanto": "mwanafunzi",
+                "sunĉo": "jua",
+                "luno": "mwezi",
+                "akvo": "maji",
+                "manĝo": "chakula",
+                "pordo": "mlango",
+                "fenestro": "dirisha",
+                "seĝo": "kiti",
+                "tablo": "meza",
+                "komputilo": "kompyuta",
+                "telefono": "simu",
+                "vizaĝo": "uso",
+                "okulo": "jicho",
+                "buso": "pua",
+                "mano": "mkono",
+                "piedo": "mguu",
+                "ĝardeno": "bustani",
+                "ĝojo": "furaha",
+                "doloro": "maumivu",
+                "felicxeco": "furaha",
+                "tago": "siku",
+                "nokto": "usiku",
+                "semajno": "wiki",
+                "monato": "mwezi",
+                "jaro": "mwaka",
+                "tempo": "wakati",
+                "aŭto": "gari",
+                "biciklo": "baiskeli",
+                "piedirado": "kutembea",
+                "kurado": "kukimbia",
+                "sporto": "michezo",
+                "ludo": "mchezo",
+                "muziko": "muziki",
+                "artiko": "sanaa",
+                "libera": "bure",
+                "laboro": "kazi",
+                "telo": "mwili",
+                "kapo": "kichwa",
+                "floro": "ua",
+                "frukto": "tunda",
+                "verdure": "majani",
+                "nutri": "lishe",
+                "bonvolu": "tafadhali",
+                "dankon": "asante",
+                "adiaux": "kwaheri",
+                "amuzo": "burudani",
+                "amikeco": "urafiki",
+                "dogano": "kimtindo",
+               "okupate": "bize",
+               "hundo": "mbwa",
+               "kato": "paka",
+               "aro": "seti",
+               "hira": "twiga",
+               "ĉevalo": "farasi",
+               "lupo": "mbwa mwitu",
+               "leono": "simba",
+               "vulpo": "mbweha",
+               "kuniklo": "sungura",
+               "pantero": "panther",
+               "urso": "dubu",
+               "akvo": "mamba",
+               "anaso": "bata",
+               "tigrido": "tiger",
+               "elefanto": "tembo",
+               "hipopotamo": "kiboko",
+               "ŝafo": "kondoo",
+               "bovo": "ng’ombe",
+               "rato": "panya",
+               "kolombo": "njiwa",
+               "cigno": "jina",
+               "simio": "kima",
+               "gorilo": "gorila",
+               "pardo": "leopard",
+               "papago": "kasuku",
+               "muso": "mwewe",
+               "tuko": "tumbili",
+               "pangolino": "pangolini",
+               "krokodilo": "mamba",
+               "struto": "strutsi",
+               "insekto": "mdudu",
+               "fiŝo": "samaki",
+               "kuraĝa": "mnyama",
+               "lumpo": "fisi",
+               "pipino": "mende",
+               "kutu": "kutu",
+               "sovaĝa porko": "nguruwe wa porini",
+               "akra": "akra",
+               "timanto": "sisi",
+               "kukolo": "kuku",
+               "ĉukuro": "uduvi",
+               "sisi": "sisi",
+               "mende": "mende",
+               "vepre": "nguruwe",
+               "serpento": "nyoka",
+               "ĉevalo": "farasi",
+               "papilio": "kipepeo",
+               "kondoro": "kondoo",
+               "vulpeto": "mbweha",
+               "sia": "simba",
+                "leono": "simba",
+                "ferio": "likizo",
+                "mirinda": "ya kushangaza",
+                "templo": "hekalu",
+                "komenco": "kuanza",
+                "fino": "mwisho",
+                "mangxi": "wasiwasi",
+                "preparo": "kujiandaa",
+                "muro": "ukuta",
+                "vojo": "njia",
+                "malbona": "mbaya",
+                "bonvenigi": "karibu",
+                "horo": "chumba",
+                "persono": "mtu",
+                "okazo": "nafasi",
+                "progreso": "maendeleo",
+                "sano": "afya",
+                "saneco": "usafi",
+                "kuracilo": "dawa",
+                "brilo": "mwangaza",
+                "fajro": "moto",
+                "neĝo": "theluji",
+                "pluvo": "mvua",
+                "venteto": "upepo",
+                "meteorologo": "mtaalamu wa hali ya hewa",
+    
+                // Kiswahili hadi Esperanto
+                "salamu": "saluton",
+                "rafiki": "amiko",
+                "mbwa": "hundo",
+                "paka": "kato",
+                "seti": "aro",
+                "twiga": "hira",
+                "farasi": "ĉevalo",
+                "mbwa mwitu": "lupo",
+                "simba": "leono",
+                "mbweha": "vulpo",
+                "sungura": "kuniklo",
+                "panther": "pantero",
+                "dubu": "urso",
+                "mamba": "akvo",
+                "bata": "anaso",
+                "tiger": "tigrido",
+                "tembo": "elefanto",
+                "kiboko": "hipopotamo",
+                "kondoo": "ŝafo",
+                "ng’ombe": "bovo",
+                "panya": "rato",
+                "njiwa": "kolombo",
+                "jina": "cigno",
+                "kima": "simio",
+                "gorila": "gorilo",
+                "leopard": "pardo",
+                "kasuku": "papago",
+                "mwewe": "muso",
+                "tumbili": "tuko",
+                "pangolini": "pangolino",
+                "mamba": "krokodilo",
+                "strutsi": "struto",
+                "mdudu": "insekto",
+                "samaki": "fiŝo",
+                "mnyama": "kuraĝa",
+                "fisi": "lumpo",
+                "mende": "pipino",
+                "kutu": "kutu",
+                "nguruwe wa porini": "sovaĝa porko",
+                "akra": "akra",
+                "sisi": "timanto",
+                "kuku": "kukolo",
+                "uduvi": "ĉukuro",
+                "sisi": "sisi",
+                "mende": "mende",
+                "nguruwe": "vepre",
+                "nyoka": "serpento",
+                "farasi": "ĉevalo",
+                "kipepeo": "papilio",
+                "kondoo": "kondoro",
+                "mbweha": "vulpeto",
+                "simba": "sia",
+                
+                
+                
+                
+                
+
+                "kitabu": "libro",
+                "nyumba": "domo",
+                "mbwa": "hundo",
+                "paka": "kato",
+                "seti": "aro",
+                "kujifunza": "eduki",
+                "neno": "vorto",
+                "simba": "leono",
+                "mwanafunzi": "lernanto",
+                "jua": "sunĉo",
+                "mwezi": "luno",
+                "maji": "akvo",
+                "chakula": "manĝo",
+                "mlango": "pordo",
+                "dirisha": "fenestro",
+                "kiti": "seĝo",
+                "meza": "tablo",
+                "kompyuta": "komputilo",
+                "simu": "telefono",
+                "uso": "vizaĝo",
+                "jicho": "okulo",
+                "pua": "buso",
+                "mkono": "mano",
+                "mguu": "piedo",
+                "bustani": "ĝardeno",
+                "furaha": "ĝojo",
+                "maumivu": "doloro",
+                "furaha": "felicxeco",
+                "siku": "tago",
+                "usiku": "nokto",
+                "bize": "okupate",
+                "wiki": "semajno",
+                "mwezi": "monato",
+                "mwaka": "jaro",
+                "wakati": "tempo",
+                "gari": "aŭto",
+                "baiskeli": "biciklo",
+                "kutembea": "piedirado",
+                
+    
+};
+
+
+        document.getElementById('searchButton').addEventListener('click', function() {
+            const word = document.getElementById('wordInput').value.toLowerCase();
+            const output = document.getElementById('outputText');
+
+            if (word) {
+                if (translations[word]) {
+                    output.textContent = translations[word];
+                } else {
+                    output.textContent = 'Hakuna tafsiri ya neno hilo.';
+                }
+            } else {
+                output.textContent = 'Tafadhali ingiza neno.';
+            }
+        });
+    </script>
+</body>
+</html>
